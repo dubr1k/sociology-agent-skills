@@ -1,0 +1,13 @@
+{
+  "name": "causal-identification-gates",
+  "origin": "BaranziniLab/biorouter-skills",
+  "commit": "67f120ca267adb8a0292293e52e38b190d498788",
+  "source_urls": [
+    "https://github.com/BaranziniLab/biorouter-skills/tree/67f120ca267adb8a0292293e52e38b190d498788/causal-identification-gates"
+  ],
+  "license_files": [
+    "LICENSE",
+    "LICENSES/BaranziniLab-Apache-2.0.txt"
+  ],
+  "adaptation": "Редакционная русская адаптация: структура и примеры отобраны и переработаны; это не полный дословный перевод."
+}

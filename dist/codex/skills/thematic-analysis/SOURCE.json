@@ -1,0 +1,13 @@
+{
+  "name": "thematic-analysis",
+  "origin": "keemanxp/thematic-analysis-skill",
+  "commit": "b4f30e32bdd5a802c0ee24999b2584b45af524b8",
+  "source_urls": [
+    "https://github.com/keemanxp/thematic-analysis-skill/tree/b4f30e32bdd5a802c0ee24999b2584b45af524b8/thematic-analysis"
+  ],
+  "license_files": [
+    "LICENSE",
+    "LICENSES/Chuah-Kee-Man-MIT.txt"
+  ],
+  "adaptation": "Редакционная русская адаптация: структура и примеры отобраны и переработаны; это не полный дословный перевод."
+}

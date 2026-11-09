@@ -1,0 +1,13 @@
+{
+  "name": "statistical-analysis",
+  "origin": "K-Dense-AI/scientific-agent-skills",
+  "commit": "2d2065fb4520fa3f3f2bcf61cff26ec8b7eba4b5",
+  "source_urls": [
+    "https://github.com/K-Dense-AI/scientific-agent-skills/tree/2d2065fb4520fa3f3f2bcf61cff26ec8b7eba4b5/skills/statistical-analysis"
+  ],
+  "license_files": [
+    "LICENSE",
+    "LICENSES/K-Dense-MIT.txt"
+  ],
+  "adaptation": "Редакционная русская адаптация: структура и примеры отобраны и переработаны; это не полный дословный перевод."
+}

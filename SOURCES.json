@@ -1,0 +1,89 @@
+{
+  "skills": [
+    {
+      "name": "sociology-research",
+      "origin": "Локальные исследовательские процедуры; публичная редакционная адаптация dubr1k и участников. Для sociology-research внешний исходный репозиторий не установлен; отдельное публичное изложение не заявляется переводом неизвестного источника.",
+      "source_urls": [],
+      "license_files": [
+        "LICENSE"
+      ],
+      "adaptation": "Новое переносимое русскоязычное изложение без личных данных и машинных путей."
+    },
+    {
+      "name": "mixed-methods-instrument-design",
+      "origin": "Локальные исследовательские процедуры; публичная редакционная адаптация dubr1k и участников. Для sociology-research внешний исходный репозиторий не установлен; отдельное публичное изложение не заявляется переводом неизвестного источника.",
+      "source_urls": [],
+      "license_files": [
+        "LICENSE"
+      ],
+      "adaptation": "Новое переносимое русскоязычное изложение без личных данных и машинных путей."
+    },
+    {
+      "name": "interim-survey-report-production",
+      "origin": "Локальные исследовательские процедуры; публичная редакционная адаптация dubr1k и участников. Для sociology-research внешний исходный репозиторий не установлен; отдельное публичное изложение не заявляется переводом неизвестного источника.",
+      "source_urls": [],
+      "license_files": [
+        "LICENSE"
+      ],
+      "adaptation": "Новое переносимое русскоязычное изложение без личных данных и машинных путей."
+    },
+    {
+      "name": "statistical-analysis",
+      "origin": "K-Dense-AI/scientific-agent-skills",
+      "commit": "2d2065fb4520fa3f3f2bcf61cff26ec8b7eba4b5",
+      "source_urls": [
+        "https://github.com/K-Dense-AI/scientific-agent-skills/tree/2d2065fb4520fa3f3f2bcf61cff26ec8b7eba4b5/skills/statistical-analysis"
+      ],
+      "license_files": [
+        "LICENSE",
+        "LICENSES/K-Dense-MIT.txt"
+      ],
+      "adaptation": "Редакционная русская адаптация: структура и примеры отобраны и переработаны; это не полный дословный перевод."
+    },
+    {
+      "name": "networkx",
+      "origin": "K-Dense-AI/scientific-agent-skills",
+      "commit": "2d2065fb4520fa3f3f2bcf61cff26ec8b7eba4b5",
+      "source_urls": [
+        "https://github.com/K-Dense-AI/scientific-agent-skills/tree/2d2065fb4520fa3f3f2bcf61cff26ec8b7eba4b5/skills/networkx"
+      ],
+      "license_files": [
+        "LICENSE",
+        "LICENSES/K-Dense-MIT.txt",
+        "LICENSES/NetworkX-BSD-3-Clause.txt"
+      ],
+      "adaptation": "Редакционная русская адаптация: структура и примеры отобраны и переработаны; это не полный дословный перевод."
+    },
+    {
+      "name": "thematic-analysis",
+      "origin": "keemanxp/thematic-analysis-skill",
+      "commit": "b4f30e32bdd5a802c0ee24999b2584b45af524b8",
+      "source_urls": [
+        "https://github.com/keemanxp/thematic-analysis-skill/tree/b4f30e32bdd5a802c0ee24999b2584b45af524b8/thematic-analysis"
+      ],
+      "license_files": [
+        "LICENSE",
+        "LICENSES/Chuah-Kee-Man-MIT.txt"
+      ],
+      "adaptation": "Редакционная русская адаптация: структура и примеры отобраны и переработаны; это не полный дословный перевод."
+    },
+    {
+      "name": "causal-identification-gates",
+      "origin": "BaranziniLab/biorouter-skills",
+      "commit": "67f120ca267adb8a0292293e52e38b190d498788",
+      "source_urls": [
+        "https://github.com/BaranziniLab/biorouter-skills/tree/67f120ca267adb8a0292293e52e38b190d498788/causal-identification-gates"
+      ],
+      "license_files": [
+        "LICENSE",
+        "LICENSES/BaranziniLab-Apache-2.0.txt"
+      ],
+      "adaptation": "Редакционная русская адаптация: структура и примеры отобраны и переработаны; это не полный дословный перевод."
+    }
+  ],
+  "notes": [
+    "NetworkX: в заголовке исходного навыка указана BSD-3-Clause, в репозитории K-Dense — MIT. Сохраняем обе декларации и уведомления; лицензия библиотеки NetworkX приведена отдельно и не выдаётся за доказательство авторства текста навыка.",
+    "Ссылки на методические статьи не дают прав на их полное воспроизведение.",
+    "Ни одна платформа или upstream-автор не заявлены спонсором либо проверяющим этой адаптации."
+  ]
+}

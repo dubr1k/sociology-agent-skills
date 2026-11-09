@@ -1,0 +1,152 @@
+[
+  {
+    "id": "hermes",
+    "project_skills_dir": ".hermes/skills",
+    "user_skills_dir": "~/.hermes/skills",
+    "source_urls": [
+      "https://hermes-agent.nousresearch.com/docs/user-guide/features/skills",
+      "https://hermes-agent.nousresearch.com/docs/user-guide/profiles"
+    ],
+    "invocation": "/<skill-name> [запрос]; агент: skills_list(), skill_view(name), skill_view(name, file_path)",
+    "tool_names": ["skills_list", "skill_view", "skill_manage"],
+    "notes": [
+      "user_skills_dir — значение по умолчанию; устанавливать в skills внутри активного HERMES_HOME. Именованные профили: ~/.hermes/profiles/<name>/skills. Не записывать в default при выбранном другом профиле.",
+      "Также поддержан <project-root>/.agents/skills. Корень проекта — ближайший предок с .git, включая worktree/submodule. Проектные skills требуют явного доверия hermes skills trust; установщик не должен давать его автоматически.",
+      "Приоритет: project, local, skills.create_dir, external_dirs. Пользовательский ~/.agents/skills не является безусловным стандартным корнем Hermes: для него документирована настройка skills.external_dirs.",
+      "Каждый навык — каталог с SKILL.md; вложенные категории поддержаны. Вызов /<skill-name> документирован, но в этой проверке не выполнялся."
+    ],
+    "verified_basis": {
+      "checked_at_utc": "2026-11-09",
+      "basis": "Официальная документация: Project-Local Skills, Using Skills, Progressive Disclosure; Profiles.",
+      "runtime_execution": false,
+      "scope": "Проверены документированные пути и интерфейсы; новые публичные адаптации в Hermes не устанавливались и не запускались."
+    }
+  },
+  {
+    "id": "openclaw",
+    "project_skills_dir": "skills",
+    "user_skills_dir": "~/.openclaw/skills",
+    "source_urls": [
+      "https://docs.openclaw.ai/tools/skills",
+      "https://docs.openclaw.ai/tools"
+    ],
+    "invocation": "$<skill-command-name> в запросе; /<skill-command-name> [запрос] как ведущая команда; агент: skills_search({query}), skills_read({name}) при доступности этих инструментов",
+    "tool_names": ["skills_search", "skills_read", "read", "write", "edit", "exec", "web_search", "web_fetch"],
+    "notes": [
+      "project_skills_dir задан относительно выбранного workspace OpenClaw, а не произвольного Git checkout. Установщик должен требовать явный workspace. Дополнительный проектный корень: <workspace>/.agents/skills.",
+      "user_skills_dir — managed/local корень default state; фактический путь <state-dir>/skills, учитывать OPENCLAW_STATE_DIR и профиль. Это общий каталог агентов данного state, не личная библиотека оператора shared Gateway.",
+      "Приоритет начинается с <workspace>/skills, <workspace>/.agents/skills, ~/.agents/skills, <state-dir>/skills. ~/.agents/skills доступен только при default state; при другом OPENCLAW_STATE_DIR home-scoped compatibility roots исключаются.",
+      "Обнаружение SKILL.md рекурсивное до шести уровней. Имя и slash-команда происходят из frontmatter name, при его отсутствии — из имени каталога. Использовать фактическое зарегистрированное имя команды: хост может его нормализовать.",
+      "Доступность зависит от allowlist, user-invocable, disable-model-invocation, prerequisites и tool policy. skills_search/skills_read условны; нельзя предполагать их наличие во всех режимах."
+    ],
+    "verified_basis": {
+      "checked_at_utc": "2026-11-09",
+      "basis": "Официальная документация: Loading order, Per-agent vs shared skills, Reference a skill in a prompt, Search installed skills; Tools overview.",
+      "runtime_execution": false,
+      "scope": "Проверена документация; Gateway и адаптации не запускались."
+    }
+  },
+  {
+    "id": "claude-code",
+    "project_skills_dir": ".claude/skills",
+    "user_skills_dir": "~/.claude/skills",
+    "source_urls": [
+      "https://code.claude.com/docs/en/skills",
+      "https://code.claude.com/docs/en/tools-reference",
+      "https://code.claude.com/docs/en/env-vars"
+    ],
+    "invocation": "/<skill-name> [запрос]; автоматический выбор по description; агент: Skill",
+    "tool_names": ["Skill", "Read", "Write", "Edit", "Bash"],
+    "notes": [
+      "Формат: <skills-root>/<skill-name>/SKILL.md. Документированы personal, project, nested, enterprise и plugin области; .claude/commands — совместимый прежний механизм, не целевой каталог этой установки.",
+      "Для нестандартного пользовательского каталога учитывать CLAUDE_CONFIG_DIR; не подменять .claude путём .agents по аналогии с Codex.",
+      "disable-model-invocation: true запрещает автоматический выбор; user-invocable: false скрывает пользовательскую команду. Claude-специфичные frontmatter, подагенты и динамическая подстановка не гарантируются другими хостами.",
+      "Grep и Glob не считать безусловно активными: текущая справка указывает, что на macOS/Linux/WSL они по умолчанию отсутствуют. Состав инструментов проверяется в конкретной сессии."
+    ],
+    "verified_basis": {
+      "checked_at_utc": "2026-11-09",
+      "basis": "Официальные Skills и Tools reference: Choose where skills load, Control who invokes a skill; точное имя инструмента Skill.",
+      "runtime_execution": false,
+      "scope": "Подтверждена документированная поддержка; Claude Code и адаптации не запускались."
+    }
+  },
+  {
+    "id": "codex",
+    "project_skills_dir": ".agents/skills",
+    "user_skills_dir": "~/.agents/skills",
+    "source_urls": [
+      "https://developers.openai.com/codex/skills/",
+      "https://learn.chatgpt.com/docs/build-skills",
+      "https://github.com/openai/codex/blob/main/codex-rs/core/src/tools/handlers/shell_spec.rs",
+      "https://github.com/openai/codex/blob/main/codex-rs/core/src/tools/handlers/apply_patch_spec.rs"
+    ],
+    "invocation": "$<skill-name> в запросе; /skills — выбор навыков в Codex CLI/IDE; автоматический выбор по description",
+    "tool_names": ["exec_command", "write_stdin", "apply_patch"],
+    "notes": [
+      "Текущая официальная страница developers.openai.com/codex/skills/ перенаправляет на learn.chatgpt.com/docs/build-skills. Здесь описан именно local discovery Codex, а не ChatGPT @-invocation.",
+      "Codex сканирует .agents/skills от CWD вверх до repository root; пользовательский корень $HOME/.agents/skills. Дополнительно документированы /etc/codex/skills и bundled system skills.",
+      "Не назначать ~/.codex/skills целевым корнем только по прежним примерам: текущая таблица local discovery указывает ~/.agents/skills. ~/.codex/config.toml — файл настроек, не каталог skills.",
+      "Поддержаны symlink-каталоги навыков. При одинаковом name записи не объединяются. agents/openai.yaml — необязательные метаданные; policy.allow_implicit_invocation: false оставляет явный $skill.",
+      "exec_command, write_stdin и apply_patch подтверждены текущим исходным кодом OpenAI; это не единый обязательный набор для каждой модели/режима. Отдельный универсальный инструмент Skill для Codex не заявляется."
+    ],
+    "verified_basis": {
+      "checked_at_utc": "2026-11-09",
+      "basis": "Официальная документация Where Codex loads local skills и How ChatGPT and Codex use skills; исходники OpenAI для имён инструментов.",
+      "runtime_execution": false,
+      "scope": "Документация и исходники прочитаны; Codex и адаптации не запускались."
+    }
+  },
+  {
+    "id": "pi",
+    "project_skills_dir": ".pi/skills",
+    "user_skills_dir": "~/.pi/agent/skills",
+    "source_urls": [
+      "https://github.com/badlogic/pi-mono",
+      "https://github.com/earendil-works/pi",
+      "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/skills.md",
+      "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/configuration.md",
+      "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/settings.md"
+    ],
+    "invocation": "/skill:<skill-name> [запрос]; автоматический выбор по description с чтением SKILL.md; /reload после изменений",
+    "tool_names": ["read", "bash", "edit", "write"],
+    "notes": [
+      "Запрошенный badlogic/pi-mono на момент проверки перенаправляет в earendil-works/pi. Проверен пакет coding-agent этого проекта, а не одноимённый сторонний Pi.",
+      "Пользовательский корень задаётся через agent directory: по умолчанию ~/.pi/agent, переопределение PI_CODING_AGENT_DIR или SDK agentDir. Добавлять /skills к фактическому agent directory.",
+      "Проектный .pi/skills относится к working directory и требует project trust. Дополнительно поддержаны ~/.agents/skills и .agents/skills; последние ищутся от CWD по предкам до repository root.",
+      "Каталоги с SKILL.md обнаруживаются рекурсивно. enableSkillCommands управляет показом команд; вручную введённая /skill:name продолжает работать. disable-model-invocation: true оставляет явный вызов.",
+      "read, bash, edit, write — документированный defaultTools; grep, find, ls и другие инструменты не следует объявлять активными без проверки настроек."
+    ],
+    "verified_basis": {
+      "checked_at_utc": "2026-11-09",
+      "basis": "Официальный репозиторий и coding-agent docs: Skills, Configuration, Settings; переход старого URL проверен HTTP-чтением.",
+      "runtime_execution": false,
+      "scope": "Документация прочитана; Pi и адаптации не запускались."
+    }
+  },
+  {
+    "id": "oh-my-pi",
+    "project_skills_dir": ".omp/skills",
+    "user_skills_dir": "~/.omp/agent/skills",
+    "source_urls": [
+      "https://github.com/can1357/oh-my-pi",
+      "https://github.com/can1357/oh-my-pi/blob/main/docs/skills.md",
+      "https://github.com/can1357/oh-my-pi/blob/main/docs/config-usage.md",
+      "https://github.com/can1357/oh-my-pi/blob/main/packages/coding-agent/src/discovery/builtin.ts"
+    ],
+    "invocation": "/skill:<skill-name> [запрос] при skills.enableSkillCommands; агент: read по skill://<skill-name> или skill://<skill-name>/<relative-path>; CLI omp skill list --json",
+    "tool_names": ["read", "write", "edit", "bash", "grep", "glob", "web_search", "manage_skill"],
+    "notes": [
+      "Канонический репозиторий — can1357/oh-my-pi, сайт omp.sh, CLI omp, пакет @oh-my-pi/pi-coding-agent. Это форк Pi; его native paths отличаются от .pi.",
+      "Native project roots: <ancestor>/.omp/skills от CWD до repository/home boundary; user root: фактический getAgentDir()/skills, обычно ~/.omp/agent/skills. Именованный профиль: ~/.omp/profiles/<name>/agent/skills. Учитывать профиль и документированные environment/XDG overrides.",
+      "Native provider и customDirectories сканируют только <skills-root>/<skill-name>/SKILL.md, без рекурсивных категорий. Для установщика нужен плоский список каталогов навыков.",
+      "Native OMP discovery имеет приоритет 100. Foreign user providers требуют opt-in через enabledProviders; foreign project roots могут загружаться по умолчанию. Не опираться на совместимость с ~/.claude или ~/.codex вместо native .omp.",
+      "read обслуживает skill://; отдельного skill_view здесь нет. manage_skill относится к managed skills и не является способом чтения опубликованного пакета. Доступность инструментов и slash-команд зависит от настроек."
+    ],
+    "verified_basis": {
+      "checked_at_utc": "2026-11-09",
+      "basis": "README канонического репозитория, официальные Skills/Configuration docs; loadSkills в native discovery/builtin.ts подтверждает обе native области.",
+      "runtime_execution": false,
+      "scope": "Документация и исходник прочитаны; omp и адаптации не запускались."
+    }
+  }
+]
